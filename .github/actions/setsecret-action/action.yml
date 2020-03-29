@@ -1,0 +1,10 @@
+name: "setsecret-action"
+description: "Sets or updates a GitHub secret in your repo"
+author: "andycw"
+runs:
+  using: "node12"
+  main: "./setsecret.js"
+inputs:
+  variable-name:
+    description: Secret name
+    default: HelloWorld

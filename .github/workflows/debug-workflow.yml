@@ -11,8 +11,6 @@ jobs:
           fetch-depth: 1
       - run: npm install
       - run: npm run build
-      - uses: ./.github/actions/debug-action
+      - uses: ./.github/actions/setsecret-action
         with:
-          amazing-creature: Octocat
-        id: debug
-      - run: echo There was an amazing message - ${{ steps.debug.outputs.amazing-message }}
+          variable-name: Dummy
