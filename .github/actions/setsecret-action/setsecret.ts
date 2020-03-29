@@ -1,6 +1,6 @@
 import * as core from '@actions/core'
 import * as github from '@actions/github'
-import * as sodium from 'tweetsodium'
+const sodium = require('tweetsodium')
 
 const run = async (): Promise<void> => {
   try {
