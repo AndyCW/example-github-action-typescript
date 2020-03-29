@@ -4,7 +4,7 @@ import * as github from '@actions/github'
 
 const run = async (): Promise<void> => {
   try {
-    const token = process.env['GITHUB_TOKEN']
+    const token = process.env['SETSECRET_USER_TOKEN'] || process.env['GITHUB_TOKEN']
     if (!token) return
 
     // Create the octokit client

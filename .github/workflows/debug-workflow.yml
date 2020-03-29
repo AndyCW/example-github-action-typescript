@@ -16,3 +16,4 @@ jobs:
           variable-name: Dummy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SETSECRET_USER_TOKEN: ${{ secrets.SETSECRET_USER_TOKEN }}
