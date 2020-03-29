@@ -38,6 +38,7 @@ const run = async (): Promise<void> => {
       repo,
       name: 'HelloWorld',
       encrypted_value: encrypted,
+      key_id: getPublicKeyResponse.data.key_id
     })
     console.log(`Saved ${value} in Secrets`)
   } catch (error) {
