@@ -19,6 +19,14 @@ const run = async (): Promise<void> => {
     })
     console.log(`PublicKey: ${getPublicKeyResponse.data.key}`)
 
+    const getSecretResponse = await octokit.actions.getSecret({
+        owner,
+        repo,
+        name: 'ACTIONS_STEP_DEBUG'
+    })
+    console.log(`SecretValueName: ${getSecretResponse.data.name}`)
+
+
 /*     // Encrypt the value
     const value = core.getInput('thanks-message');
     // Convert the message and key to Uint8Array's (Buffer implements that interface)
