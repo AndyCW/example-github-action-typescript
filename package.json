@@ -14,6 +14,7 @@
     "jest": "^25.2.3",
     "js-yaml": "^3.13.1",
     "ts-jest": "^25.2.1",
+    "tweetsodium": "0.0.4",
     "typescript": "^3.8.3"
   }
 }

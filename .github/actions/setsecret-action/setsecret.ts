@@ -1,6 +1,6 @@
 import * as core from '@actions/core'
 import * as github from '@actions/github'
-//import * as sodium from 'tweetsodium'
+import * as sodium from 'tweetsodium'
 
 const run = async (): Promise<void> => {
   try {
@@ -19,16 +19,9 @@ const run = async (): Promise<void> => {
     })
     console.log(`PublicKey: ${getPublicKeyResponse.data.key}`)
 
-    const getSecretResponse = await octokit.actions.getSecret({
-        owner,
-        repo,
-        name: 'ACTIONS_STEP_DEBUG'
-    })
-    console.log(`SecretValueName: ${getSecretResponse.data.name}`)
 
-
-/*     // Encrypt the value
-    const value = core.getInput('thanks-message');
+    // Encrypt the value
+    const value = core.getInput('variable-name');
     // Convert the message and key to Uint8Array's (Buffer implements that interface)
     const messageBytes = Buffer.from(value);
     const keyBytes = Buffer.from(getPublicKeyResponse.data.key, 'base64');
@@ -40,13 +33,13 @@ const run = async (): Promise<void> => {
 
     // Create or update a secret for the repository
     // https://octokit.github.io/rest.js/v17#actions-create-or-update-secret-for-repo
-     const issueCommentResponse = await octokit.actions.createOrUpdateSecretForRepo({
+    await octokit.actions.createOrUpdateSecretForRepo({
       owner,
       repo,
       name: 'HelloWorld',
       encrypted_value: encrypted,
     })
-    console.log(`Replied with thanks message: ${issueCommentResponse.data.url}`) */
+    console.log(`Saved ${value} in Secrets`)
   } catch (error) {
     console.error(error.message)
     core.setFailed(`SetSecret-action failure: ${error}`)
