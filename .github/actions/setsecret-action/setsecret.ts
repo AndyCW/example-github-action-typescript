@@ -21,12 +21,12 @@ const run = async (): Promise<void> => {
     console.log(`PublicKey: ${publicKey}`)
 
     // Get the keys and values to work on
-    let data: Params[] = JSON.parse(core.getInput('data'));
+    let data: params = JSON.parse(core.getInput('data'));
 
-    data.forEach(async entry => {
-      console.log(`Saving Secret name ${entry.name}`);
+    data.secrets.forEach(async secret => {
+      console.log(`Saving Secret name ${secret.name}`);
       // Convert the message and key to Uint8Array's (Buffer implements that interface)
-      const encrypted = encryptValue(entry.value, publicKey)
+      const encrypted = encryptValue(secret.value, publicKey)
 
       // Create or update a secret for the repository
       // https://octokit.github.io/rest.js/v17#actions-create-or-update-secret-for-repo
@@ -37,7 +37,7 @@ const run = async (): Promise<void> => {
         encrypted_value: encrypted,
         key_id: getPublicKeyResponse.data.key_id
       })
-      console.log(`Saved ${entry.name} in Secrets`)
+      console.log(`Saved ${secret.name} in Secrets`)
     });
 
   } catch (error) {
@@ -48,9 +48,13 @@ const run = async (): Promise<void> => {
 
 run()
 
-interface Params {
+interface secretItem {
   name: string;
   value: string;
+}
+
+interface params {
+  secrets: secretItem[]
 }
 
 export default run

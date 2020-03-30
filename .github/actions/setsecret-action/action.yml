@@ -7,4 +7,4 @@ runs:
 inputs:
   data:
     description: JSON string of array of secret name and value
-    default: "{[{'name':'aSecretName','value':'aValue'}]}"
+    default: "{'secrets':[{'name':'aSecretName','value':'aValue'}]}"
