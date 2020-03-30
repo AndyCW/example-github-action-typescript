@@ -33,7 +33,7 @@ const run = async (): Promise<void> => {
       await octokit.actions.createOrUpdateSecretForRepo({
         owner,
         repo,
-        name: 'HelloWorld',
+        name: secret.name,
         encrypted_value: encrypted,
         key_id: getPublicKeyResponse.data.key_id
       })
