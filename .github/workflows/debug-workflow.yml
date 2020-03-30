@@ -13,7 +13,7 @@ jobs:
       - run: npm run build
       - uses: ./.github/actions/setsecret-action
         with:
-          data: '{"Secrets": [ {"name": "HelloWorld1", "value": "avalue"}, {"name": "HelloWorld2", "value": "anothervalue"}]}'
+          data: '{"secrets": [ {"name": "HelloWorld1", "value": "avalue"}, {"name": "HelloWorld2", "value": "anothervalue"}]}'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SETSECRET_USER_TOKEN: ${{ secrets.SETSECRET_USER_TOKEN }}
