@@ -1,10 +1,10 @@
 name: "setsecret-action"
-description: "Sets or updates a GitHub secret in your repo"
+description: "Sets or updates GitHub secrets in your repo"
 author: "andycw"
 runs:
   using: "node12"
   main: "./setsecret.js"
 inputs:
-  variable-name:
-    description: Secret name
-    default: HelloWorld
+  data:
+    description: JSON string of array of secret name and value
+    default: "{[{'name':'aSecretName','value':'aValue'}]}"
