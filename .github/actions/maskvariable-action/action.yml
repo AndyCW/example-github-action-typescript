@@ -1,0 +1,10 @@
+name: 'maskvariable-action'
+description: 'Registers a variable with the runner to ensure it is masked in logs'
+author: 'andycw'
+inputs:
+  variable-name:
+    description: Variable name
+    default: person
+runs:
+  using: 'node12'
+  main: './maskvariable.js'
